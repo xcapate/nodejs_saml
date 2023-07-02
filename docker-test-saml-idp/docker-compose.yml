@@ -1,0 +1,15 @@
+version: '3'
+services:
+  testsamlidp_idp:
+    build: .
+    environment:
+      SIMPLESAMLPHP_SP_ENTITY_ID: saml-poc
+      SIMPLESAMLPHP_SP_ASSERTION_CONSUMER_SERVICE: http://localhost:4300/login/callback
+      SIMPLESAMLPHP_SP_SINGLE_LOGOUT_SERVICE: http://localhost:4300/logout/callback
+      SIMPLESAMLPHP_ADMIN_PASSWORD: test
+      SIMPLESAMLPHP_SECRET_SALT: salt
+    ports:
+    - "9000:8080"
+    - "8443:8443"
+    #volumes:
+    #- /users.php:/var/www/simplesamlphp/config/simplesamlphp/authsources.php
